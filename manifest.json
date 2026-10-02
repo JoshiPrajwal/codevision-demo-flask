@@ -1,0 +1,16 @@
+{
+  "id": "flask",
+  "name": "Python Flask app",
+  "repoName": "codevision-demo-flask",
+  "description": "A tiny notes app: SQL injection, a hardcoded secret, debug mode, eval() and an off-by-one.",
+  "language": "Python",
+  "expected": [
+    {"file": "app.py", "rule": "py-sql-string", "bug": "SQL built from user input"},
+    {"file": "app.py", "rule": "secret-literal", "bug": "Hardcoded secret key"},
+    {"file": "app.py", "rule": "py-flask-debug", "bug": "Debug mode on"},
+    {"file": "app.py", "rule": "py-eval-exec", "bug": "eval() on a query parameter"}
+  ],
+  "notForRules": [
+    {"file": "pagination.py", "bug": "Logic bug: every page drops its last item"}
+  ]
+}
