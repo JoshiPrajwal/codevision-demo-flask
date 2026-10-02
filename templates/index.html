@@ -1,0 +1,15 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Notes</title>
+  </head>
+  <body>
+    <form action="/search"><input name="q" placeholder="Search notes"></form>
+    <ul>
+      {% for note in notes %}
+      <li>{{ note[1] }}</li>
+      {% endfor %}
+    </ul>
+  </body>
+</html>
