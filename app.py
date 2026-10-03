@@ -21,8 +21,8 @@ def index():
 @app.route("/search")
 def search():
     term = request.args.get("q", "")
-    query = f"SELECT id, title FROM notes WHERE title LIKE '%{term}%'"
-    rows = connect().execute(query).fetchall()
+    query = "SELECT id, title FROM notes WHERE title LIKE ?"
+    rows = connect().execute(query, (f"%{term}%",)).fetchall()
     return render_template("index.html", notes=rows)
 
 
