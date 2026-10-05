@@ -28,8 +28,12 @@ def search():
 
 @app.route("/calc")
 def calc():
+    import ast
     expression = request.args.get("expr", "1+1")
-    return {"result": eval(expression)}
+    try:
+        return {"result": ast.literal_eval(expression)}
+    except (ValueError, SyntaxError):
+        return {"error": "Invalid expression"}, 400
 
 
 if __name__ == "__main__":
